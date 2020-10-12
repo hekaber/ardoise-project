@@ -1,0 +1,46 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+ardoise-app/dist
+ardoise-app/tmp
+ardoise-app/out-tsc
+# Only exists if Bazel was run
+ardoise-app/bazel-out
+
+# dependencies
+ardoise-app/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+ardoise-app/.sass-cache
+ardoise-app/connect.lock
+ardoise-app/coverage
+ardoise-app/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+ardoise-app/typings
+
+# System Files
+.DS_Store
+Thumbs.db
