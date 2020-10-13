@@ -7,5 +7,5 @@ from rest_framework.response import Response
 class LoggedView(generics.GenericAPIView):
 
     def get(self, request):
-        response = { 'message': 'hello' }
+        response = { 'message': 'hello', 'request': request.GET }
         return Response(response)
