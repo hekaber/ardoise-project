@@ -33,6 +33,8 @@ speed-measure-plugin*.json
 !.vscode/extensions.json
 .history/*
 
+ardoise-serv/config/constants.py
+
 # misc
 ardoise-app/.sass-cache
 ardoise-app/connect.lock
