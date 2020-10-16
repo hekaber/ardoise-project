@@ -21,4 +21,5 @@ urlpatterns = [
     path('auth/', include('rest_framework_social_oauth2.urls')),
     path('api/v1/contacts/', include('apps.contacts.urls')),
     path('welcome/', include('apps.welcome.urls')),
+    path("midtest/", include('apps.middletest.urls')),
 ]

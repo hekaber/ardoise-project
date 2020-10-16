@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'apps.contacts',
-    'apps.tickets'
+    'apps.tickets',
+    'apps.middletest'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.middletest.middleware.MiddlewareTest',
 ]
 
 ROOT_URLCONF = 'config.urls'
