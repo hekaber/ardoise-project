@@ -1,0 +1,9 @@
+{% extends "shared/base.html" %}
+{% block title %}New ticket{% endblock %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-success">Save ticket</button>
+  </form>
+{% endblock %}

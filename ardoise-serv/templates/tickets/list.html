@@ -1,0 +1,8 @@
+{% extends "shared/base.html" %}
+{% block title %}
+        List
+{% endblock %}
+{% block content %}
+    <h1>My tickets</h1>
+    <button type="button" class="btn btn-primary"><a href="{% url 'TicketCreateView' %}">New</a></button>
+{% endblock %}

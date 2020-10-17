@@ -35,3 +35,8 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+a, a:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
