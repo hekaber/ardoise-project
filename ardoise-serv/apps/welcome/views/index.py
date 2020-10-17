@@ -4,7 +4,7 @@ import pathlib
 
 class IndexView(TemplateView):
 
-    template_name = '../../templates/index.html'
+    template_name = 'welcome/index.html'
 
     def get(self, request, *args, **kwargs):
         current_path = pathlib.Path(__file__).parent.absolute()

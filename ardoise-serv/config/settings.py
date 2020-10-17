@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 from . import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,7 +44,8 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'apps.contacts',
-    'apps.tickets'
+    'apps.tickets',
+    'apps.welcome'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +63,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(os.path.join(BASE_DIR, 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,6 +148,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
 
 STATIC_URL = '/static/'
 
