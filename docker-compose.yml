@@ -2,16 +2,6 @@ version: '3.5' # We use version 3.5 syntax
 
 services: # Here we define our service(s)
 
-    nginx-service:
-        container_name: nginxardoisecontainer
-        build:
-            context: .
-            dockerfile: ./docker/nginx/Dockerfile
-        environment:
-            NODE_ENV: production
-        ports:
-            - 80:80
-
     ardoise-db:
         container_name: postgresardoisecontainer
         image: postgres
@@ -32,6 +22,5 @@ services: # Here we define our service(s)
             - ./ardoise-serv:/usr/src/app
         ports:
             - 8000:8000
-
-
-
+        depends_on:
+            -   ardoise-db
