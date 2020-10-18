@@ -1,4 +1,5 @@
 from django.contrib.auth.base_user import BaseUserManager
+from apps.contacts.models import Contact
 
 
 class ArdoiseUserManager(BaseUserManager):

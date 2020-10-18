@@ -2,6 +2,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.core.mail import send_mail
 from django.db import models
 from apps.accounts.managers import ArdoiseUserManager
+from apps.contacts.models import Contact
 
 
 class ArdoiseUser(AbstractBaseUser):
@@ -13,6 +14,7 @@ class ArdoiseUser(AbstractBaseUser):
     is_active = models.BooleanField(verbose_name='active', default=True)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    contact = models.ForeignKey(Contact, null=True, on_delete=models.SET_NULL)
 
     objects = ArdoiseUserManager()
 
@@ -23,6 +25,15 @@ class ArdoiseUser(AbstractBaseUser):
         verbose_name = 'user'
         verbose_name_plural = 'users'
         db_table = 'ardoise_user'
+
+    def save(self, *args, **kwargs):
+        created = self.pk is None
+        if created:
+            contact = Contact.objects.create(
+                email=self.email
+            )
+            self.contact = contact
+        super(ArdoiseUser, self).save(*args, **kwargs)
 
     def get_full_name(self):
 
