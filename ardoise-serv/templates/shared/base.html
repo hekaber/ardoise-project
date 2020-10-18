@@ -9,7 +9,11 @@
 </head>
 <body>
     <header>
-      <!-- Fixed navbar -->
+        {% if user.is_authenticated %}
+            <button type="button" class="btn btn-primary"><a href="{% url 'logout' %}">Logout</a></button>
+        {% else %}
+            <button type="button" class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
+        {% endif %}
     </header>
     <main id="content">
         {% block content %}{% endblock %}
