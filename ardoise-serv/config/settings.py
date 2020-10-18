@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'social_django',
     'rest_framework_social_oauth2',
+    'apps.accounts',
     'apps.contacts',
     'apps.tickets',
     'apps.welcome'
@@ -79,6 +80,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.ArdoiseUser'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
@@ -155,4 +158,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = '/welcome/logged/'
+LOGIN_REDIRECT_URL = '/'
