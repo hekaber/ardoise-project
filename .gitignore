@@ -49,3 +49,4 @@ ardoise-app/typings
 # System Files
 .DS_Store
 Thumbs.db
+/ardoise-serv/apps/frontend/node_modules/
