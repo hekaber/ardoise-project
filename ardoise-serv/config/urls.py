@@ -23,4 +23,5 @@ urlpatterns = [
     path('ticket/', include('apps.tickets.urls')),
     path('api/v1/contacts/', include('apps.contacts.urls')),
     path('', include('apps.welcome.urls')),
+    path('react/', include('apps.frontend.urls')),
 ]
