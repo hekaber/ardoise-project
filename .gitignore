@@ -11,6 +11,7 @@ ardoise-app/bazel-out
 
 # dependencies
 ardoise-app/node_modules
+ardoise-serv/apps/frontend/node_modules
 
 # profiling files
 chrome-profiler-events*.json
@@ -48,3 +49,4 @@ ardoise-app/typings
 # System Files
 .DS_Store
 Thumbs.db
+/ardoise-serv/apps/frontend/node_modules/

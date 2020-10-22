@@ -3,5 +3,5 @@ from .views.contact_details import ContactList
 
 
 urlpatterns = [
-    path('list/', ContactList.as_view()),
+    path('', ContactList.as_view()),
 ]
