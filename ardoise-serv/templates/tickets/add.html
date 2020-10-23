@@ -2,9 +2,16 @@
 {% load materializecss %}
 {% block title %}New ticket{% endblock %}
 {% block content %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form|materializecss }}
-    <button type="submit" class="btn btn-success">Save ticket</button>
-  </form>
+    <div class="container">
+        <h1 class="header center">New ticket</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row center">
+                {{ form|materializecss }}
+            </div>
+            <div class="row center">
+                <button class="btn-large waves-effect waves-light  green lighten-1" type="submit">Save ticket</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

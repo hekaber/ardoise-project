@@ -1,18 +1,22 @@
 from apps.tickets.models import Ticket
 from apps.tickets.serializers import Ticket
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.views.generic import TemplateView
 
 
-class TicketListView(APIView):
+class TicketListView(LoginRequiredMixin, generic.ListView):
 
-    def get(self, request, format=None):
+    login_url = '/accounts/login/'
+    model = Ticket
+    context_object_name = 'ticket_list'
+    template_name = 'tickets/list.html'
 
-        tickets = Ticket.objects.all()
-        serializer = Ticket(tickets, many=True)
-        return Response(serializer.data)
+    def get_queryset(self):
+
+        return Ticket.objects.filter(owner__id=self.request.user.contact_id)
 
 
 class TicketListTemplateView(TemplateView):
