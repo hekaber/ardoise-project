@@ -3,6 +3,12 @@
         List
 {% endblock %}
 {% block content %}
-    <h1>My tickets</h1>
-    <button type="button" class="btn btn-primary"><a href="{% url 'TicketCreateView' %}">New</a></button>
+    <div class="container">
+        <h1 class="header center">My tickets</h1>
+        <div class="row center">
+        </div>
+        <div class="row center">
+            <a class="btn-large waves-effect waves-light  green lighten-1" href="{% url 'TicketCreateView' %}">Add</a>
+        </div>
+    </div>
 {% endblock %}

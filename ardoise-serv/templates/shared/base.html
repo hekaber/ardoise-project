@@ -4,27 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "/assets/css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "/assets/css/styles.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static "/assets/css/materialize.min.css" %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static "/assets/css/styles.css" %}"  media="screen,projection"/>
 </head>
 <body>
-    <header>
-        {% if user.is_authenticated %}
-            <div>Hello! {{ user.email }}</div>
-            <button type="button" class="btn btn-primary"><a href="{% url 'logout' %}">Logout</a></button>
-        {% else %}
-            <button type="button" class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
-        {% endif %}
-    </header>
-    <main id="content">
+    <nav class="blue-grey darken-2" role="navigation">
+        <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo"><img src="{% static "/assets/images/logo.jpg" %}"></a>
+            <ul class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                    <li>Hello! {{ user.email }}</li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <main id="content" class="section no-pad-bot">
         {% block content %}{% endblock %}
     </main>
-    <footer class="footer">
+    <footer class="page-footer grey darken-4">
       <div class="container">
-        copyright HKB
+          <div class="row">
+              <div class="col l6 s12">
+                  <h5>Made by HKB</h5>
+              </div>
+          </div>
       </div>
     </footer>
 </body>
-<script src="{% static "/assets/js/jquery-3.5.1.min.js" %}"></script>
-<script src="{% static "/assets/js/bootstrap.bundle.min.js" %}"></script>
+<script type="text/javascript" src="{%  static "/assets/js/materialize.min.js" %}"></script>
 </html>

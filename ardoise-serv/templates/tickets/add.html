@@ -1,9 +1,10 @@
 {% extends "shared/base.html" %}
+{% load materializecss %}
 {% block title %}New ticket{% endblock %}
 {% block content %}
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|materializecss }}
     <button type="submit" class="btn btn-success">Save ticket</button>
   </form>
 {% endblock %}
