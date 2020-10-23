@@ -19,6 +19,7 @@ class TicketCreateView(View):
             ticket.owner_id = form.cleaned_data['owner']
             ticket.debtor_id = form.cleaned_data['debtor']
             ticket.amount = form.cleaned_data['amount']
+            ticket.currency_id = form.cleaned_data['currency']
             ticket.save()
 
         return render(request, 'tickets/add.html', {'form': form})

@@ -1,0 +1,59 @@
+[
+  {
+    "model": "shared.currency",
+    "pk": 1,
+    "fields": {
+      "iso_code": "CHF"
+    }
+  },
+  {
+    "model": "shared.currency",
+    "pk": 2,
+    "fields": {
+      "iso_code": "EUR"
+    }
+  },
+  {
+    "model": "shared.currency",
+    "pk": 3,
+    "fields": {
+      "iso_code": "JPY"
+    }
+  },
+  {
+    "model": "shared.country",
+    "pk": 1,
+    "fields": {
+      "iso_code": "CH",
+      "country_label": "label_swiss",
+      "currency": 1
+    }
+  },
+  {
+    "model": "shared.country",
+    "pk": 2,
+    "fields": {
+      "iso_code": "DE",
+      "country_label": "label_germany",
+      "currency": 2
+    }
+  },
+  {
+    "model": "shared.country",
+    "pk": 3,
+    "fields": {
+      "iso_code": "FR",
+      "country_label": "label_france",
+      "currency": 2
+    }
+  },
+  {
+    "model": "shared.country",
+    "pk": 4,
+    "fields": {
+      "iso_code": "JP",
+      "country_label": "label_japan",
+      "currency": 3
+    }
+  }
+]
