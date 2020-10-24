@@ -1,5 +1,5 @@
 from apps.tickets.models import Ticket
-from apps.tickets.serializers import Ticket
+from apps.tickets.models import Ticket
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 

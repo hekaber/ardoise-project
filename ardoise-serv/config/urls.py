@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('rest_framework_social_oauth2.urls')),
     path('ticket/', include('apps.tickets.urls')),
-    path('api/v1/contacts/', include('apps.contacts.urls')),
+    path('contacts/', include('apps.contacts.urls')),
     path('', include('apps.welcome.urls')),
     path('react/', include('apps.frontend.urls')),
 ]
