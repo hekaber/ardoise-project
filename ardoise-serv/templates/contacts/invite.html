@@ -1,16 +1,16 @@
 {% extends "shared/base.html" %}
 {% block title %}
-    Contacts
+    Contacts - Invite
 {% endblock %}
 {% block content %}
     <div class="container">
-        <h1 class="header center">Contacts</h1>
+        <h1 class="header center">Invite</h1>
         <div class="row">
-            <form action="{% url 'ContactListView' %}" method="GET" value="{{ request.GET.q }}">
+            <form action="{% url 'InviteView' %}" method="GET" value="{{ request.GET.search }}">
                 <div class="input-field col s9">
                     <i class="material-icons prefix">search</i>
                     <label for="search">Search</label>
-                    <input type="text" name="search" value="{{ request.GET.q }}" placeholder="Search contacts"/>
+                    <input type="text" name="search" value="{{ request.GET.search }}" placeholder="Search contacts"/>
                 </div>
                 <div class="col s3">
                     <button class="btn-large waves-effect waves-light  green lighten-1" type="submit">Go</button>
@@ -38,7 +38,7 @@
             </ul>
         </div>
         <div class="row center">
-            <a class="btn-large waves-effect waves-light  green lighten-1" href="{% url 'InviteView' %}">Invite</a>
+            <a class="btn-large waves-effect waves-light  green lighten-1" href="">Invite</a>
         </div>
     </div>
 {% endblock %}

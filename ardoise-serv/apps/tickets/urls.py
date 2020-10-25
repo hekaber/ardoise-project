@@ -4,6 +4,6 @@ from .views.add_ticket import TicketCreateView
 
 
 urlpatterns = [
-    path('list/', TicketListView.as_view(), name="TicketListTemplateView"),
+    path('list/', TicketListView.as_view(), name="TicketListView"),
     path('add/', TicketCreateView.as_view(), name="TicketCreateView"),
 ]

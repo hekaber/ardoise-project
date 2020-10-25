@@ -1,0 +1,108 @@
+[
+  {
+    "model": "shared.statuscategory",
+    "pk": 1,
+    "fields": {
+      "name": "INVITATION",
+      "label": "label_invitation"
+    }
+  },
+  {
+    "model": "shared.statuscategory",
+    "pk": 2,
+    "fields": {
+      "name": "TICKET",
+      "label": "label_ticket"
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 1,
+    "fields": {
+      "name": "INVITATION_PENDING",
+      "label": "label_invitation_pending",
+      "category": 1
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 2,
+    "fields": {
+      "name": "INVITATION_VALIDATED",
+      "label": "label_invitation_validated",
+      "category": 1
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 3,
+    "fields": {
+      "name": "INVITATION_CANCELLED",
+      "label": "label_invitation_cancelled",
+      "category": 1
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 4,
+    "fields": {
+      "name": "INVITATION_REFUSED",
+      "label": "label_invitation_refused",
+      "category": 1
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 5,
+    "fields": {
+      "name": "TICKET_PENDING",
+      "label": "label_ticket_pending",
+      "category": 2
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 6,
+    "fields": {
+      "name": "TICKET_VALIDATED",
+      "label": "label_ticket_validated",
+      "category": 2
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 7,
+    "fields": {
+      "name": "TICKET_CANCELLED",
+      "label": "label_ticket_cancelled",
+      "category": 2
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 8,
+    "fields": {
+      "name": "TICKET_REFUSED",
+      "label": "label_ticket_refused",
+      "category": 2
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 9,
+    "fields": {
+      "name": "TICKET_PAID",
+      "label": "label_ticket_paid",
+      "category": 2
+    }
+  },
+  {
+    "model": "shared.status",
+    "pk": 10,
+    "fields": {
+      "name": "TICKET_ON_CONFLICT",
+      "label": "label_ticket_on_conflict",
+      "category": 2
+    }
+  }
+]

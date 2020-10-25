@@ -15,8 +15,8 @@
             <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
                     <li>Hello! {{ user.email }}</li>
-                    <li><a href="{% url 'TicketListTemplateView' %}">Tickets</a></li>
-                    <li><a href="{% url 'ContactListTemplateView' %}">Contacts</a></li>
+                    <li><a href="{% url 'TicketListView' %}">Tickets</a></li>
+                    <li><a href="{% url 'ContactListView' %}">Contacts</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>

@@ -12,4 +12,8 @@ class ContactListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
 
+        search = self.request.GET.get('search', None)
+
+        if search:
+            return Contact.objects.get(pk=self.request.user.contact_id).contacts.filter(email__contains=search)
         return Contact.objects.get(pk=self.request.user.contact_id).contacts.all()
