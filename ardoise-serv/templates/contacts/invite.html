@@ -37,7 +37,7 @@
                             {% if contact.id not in current_invites %}
                                 <div class="col s1"><a  class="btn-large waves-effect waves-light  green lighten-1" href="#">Invite</a></div>
                             {% else %}
-                                <div class="col s1">*</div>
+                                <div class="col s1">{{ invites_map|get_item:contact.id }}</div>
                             {% endif %}
                         </div>
                     </li>

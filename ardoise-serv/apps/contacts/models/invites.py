@@ -3,6 +3,7 @@ from apps.contacts.models import Contact
 from apps.shared.models import Status
 
 DEFAULT_INVITE_ID = 1
+INVITE_STATUS_CATEGORY = 1
 
 
 class Invite(models.Model):
