@@ -1,4 +1,4 @@
-from apps.contacts.models import Contact, Invite, DEFAULT_INVITE_ID, INVITE_STATUS_CATEGORY
+from apps.contacts.models import Contact, Invite
 from apps.contacts.forms import InviteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q

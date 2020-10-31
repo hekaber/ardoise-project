@@ -11,7 +11,6 @@ class InviteStatusEnum(MEnum):
 
 
 DEFAULT_INVITE_ID = InviteStatusEnum.PENDING
-INVITE_STATUS_CATEGORY = 1
 
 
 class Invite(models.Model):
@@ -21,7 +20,6 @@ class Invite(models.Model):
     from_contact = models.ForeignKey(Contact, related_name='%(class)s_related_from', on_delete=models.CASCADE)
     to_contact = models.ForeignKey(Contact, related_name='%(class)s_related_to', on_delete=models.CASCADE)
     status = models.CharField(max_length=50, default=InviteStatusEnum.PENDING, choices=InviteStatusEnum.get_choices())
-    # status = models.ForeignKey(Status, default=DEFAULT_INVITE_ID, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         db_table = 'invite'

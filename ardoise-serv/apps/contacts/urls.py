@@ -1,9 +1,8 @@
 from django.urls import path, include
-from .views.contact_list import ContactListView
-from .views.invite import InviteView
+from .views.contact_list import ContactFriendsListView, ContactListView
 
 
 urlpatterns = [
+    path('friends/', ContactFriendsListView.as_view(), name="ContactFriendsListView"),
     path('list/', ContactListView.as_view(), name="ContactListView"),
-    path('invite/', InviteView.as_view(), name="InviteView"),
 ]
