@@ -1,9 +1,13 @@
 import uuid
 
 from django.db import models
+from apps.contacts.managers import ContactsUserManager
 
 
 class Contact(models.Model):
+
+    from_curr_user = ContactsUserManager()
+    objects = models.Manager()
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)

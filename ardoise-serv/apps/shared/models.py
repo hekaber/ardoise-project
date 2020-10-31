@@ -16,20 +16,3 @@ class Country(models.Model):
 
     class Meta:
         db_table = 'country'
-
-
-class StatusCategory(models.Model):
-    name = models.CharField(max_length=100, default='')
-    label = models.CharField(max_length=100, default='')
-
-    class Meta:
-        db_table = 'status_category'
-
-
-class Status(models.Model):
-    category = models.ForeignKey(StatusCategory, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, default='')
-    label = models.CharField(max_length=100, default='')
-
-    class Meta:
-        db_table = 'status'

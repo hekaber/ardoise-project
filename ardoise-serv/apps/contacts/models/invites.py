@@ -1,8 +1,16 @@
 from django.db import models
 from apps.contacts.models import Contact
-from apps.shared.models import Status
+from apps.shared.utils import MEnum
 
-DEFAULT_INVITE_ID = 1
+
+class InviteStatusEnum(MEnum):
+    PENDING = "invitation_pending"
+    VALIDATED = "invitation_validated"
+    CANCELLED = "invitation_cancelled"
+    DENIED = "invitation_denied"
+
+
+DEFAULT_INVITE_ID = InviteStatusEnum.PENDING
 INVITE_STATUS_CATEGORY = 1
 
 
@@ -12,7 +20,8 @@ class Invite(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
     from_contact = models.ForeignKey(Contact, related_name='%(class)s_related_from', on_delete=models.CASCADE)
     to_contact = models.ForeignKey(Contact, related_name='%(class)s_related_to', on_delete=models.CASCADE)
-    status = models.ForeignKey(Status, default=DEFAULT_INVITE_ID, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=50, default=InviteStatusEnum.PENDING, choices=InviteStatusEnum.get_choices())
+    # status = models.ForeignKey(Status, default=DEFAULT_INVITE_ID, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         db_table = 'invite'

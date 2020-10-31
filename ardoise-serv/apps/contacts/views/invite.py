@@ -1,5 +1,4 @@
 from apps.contacts.models import Contact, Invite, DEFAULT_INVITE_ID, INVITE_STATUS_CATEGORY
-from apps.shared.models import Status
 from apps.contacts.forms import InviteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
@@ -15,15 +14,10 @@ class InviteView(LoginRequiredMixin, generic.TemplateView):
 
         search = self.request.GET.get('search', '')
 
-        queryset = Contact.objects.exclude(pk=self.request.user.contact_id)
+        contacts_list = Contact.from_curr_user.find_potential_contacts(self.request.user)
 
         if search:
-            queryset = Contact.objects.filter((
-                Q(first_name__contains=search) |
-                Q(last_name__contains=search) |
-                Q(email__contains=search)) &
-                ~Q(pk=self.request.user.contact_id)
-            )
+            contacts_list = Contact.from_curr_user.search(self.request.user, search)
 
         context = super().get_context_data(**kwargs)
 
@@ -31,11 +25,10 @@ class InviteView(LoginRequiredMixin, generic.TemplateView):
             from_contact=self.request.user.contact_id
         ).values(
             'to_contact',
-            'status_id',
-            'status__label'
+            'status'
         )
 
-        context['invites_map'] = {invite.get('to_contact'): invite.get('status__label') for invite in invites}
-        context['contact_list'] = queryset
+        context['invites_map'] = {invite.get('to_contact'): invite.get('status') for invite in invites}
+        context['contact_list'] = contacts_list
 
         return self.render_to_response(context)
