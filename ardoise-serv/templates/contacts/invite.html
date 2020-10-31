@@ -34,7 +34,7 @@
                             <div class="col s4">{{ contact.first_name }}</div>
                             <div class="col s4">{{ contact.last_name }}</div>
                             <div class="col s2">{{ contact.email }}</div>
-                            {% if contact.id not in current_invites %}
+                            {% if contact.id not in invites_map|keys %}
                                 <div class="col s1"><a  class="btn-large waves-effect waves-light  green lighten-1" href="#">Invite</a></div>
                             {% else %}
                                 <div class="col s1">{{ invites_map|get_item:contact.id }}</div>

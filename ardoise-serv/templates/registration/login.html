@@ -10,13 +10,8 @@
                 {{ form|materializecss }}
             </div>
             <div class="row center">
-                <button class="btn-large waves-effect waves-light  green lighten-1" type="submit">Save ticket</button>
+                <button class="btn-large waves-effect waves-light  green lighten-1" type="submit">Login</button>
             </div>
         </form>
     </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Login</button>
-    </form>
 {% endblock %}
