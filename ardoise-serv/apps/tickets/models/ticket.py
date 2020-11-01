@@ -1,18 +1,16 @@
-from enum import Enum
-
 from django.db import models
 from apps.contacts.models import Contact
 from apps.shared.models import Currency
-from apps.shared.utils import MEnum
+from django.utils.translation import gettext_lazy as _
 
 
-class TicketStatusEnum(MEnum):
-    PENDING = "ticket_pending"
-    ONGOING = "ticket_ongoing"
-    VALIDATED = "ticket_validated"
-    CANCELLED = "ticket_cancelled"
-    DENIED = "ticket_denied"
-    PAID = "ticket_paid"
+class TicketStatusEnum(models.TextChoices):
+    PENDING = 'TPE', _('ticket_pending')
+    ONGOING = 'TON', _('ticket_ongoing')
+    VALIDATED = 'TVA', _('ticket_validated')
+    CANCELLED = 'TCA', _('ticket_cancelled')
+    DENIED = 'TDE', _('ticket_denied')
+    PAID = 'TPA', _('ticket_paid')
 
 
 class Ticket(models.Model):
@@ -23,7 +21,7 @@ class Ticket(models.Model):
     owner = models.ForeignKey(Contact, related_name='%(class)s_related_owner', on_delete=models.CASCADE)
     debtor = models.ForeignKey(Contact, related_name='%(class)s_related_debtor', null=True, on_delete=models.SET_NULL)
     amount = models.IntegerField()
-    status = models.CharField(max_length=50, default=TicketStatusEnum.PENDING, choices=TicketStatusEnum.get_choices())
+    status = models.CharField(max_length=50, default=TicketStatusEnum.PENDING, choices=TicketStatusEnum.choices)
     currency = models.ForeignKey(Currency, null=True, on_delete=models.SET_NULL)
 
     class Meta:

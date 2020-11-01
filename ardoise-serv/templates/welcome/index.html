@@ -19,7 +19,10 @@
                 <div class="col s12 m4">
                     <div class="icon-block">
                         <h5 class="left-align">Invitations</h5>
-                        <p class="light"><a href="">You have XX invitations.</a></p>
+                        <p class="light"><a href="">You have {{ counter.pending }} pending invitations.</a></p>
+                        <p class="light"><a href="">You have {{ counter.validated }} validated invitations.</a></p>
+                        <p class="light"><a href="">You have {{ counter.cancelled }} cancelled invitations.</a></p>
+                        <p class="light"><a href="">You have {{ counter.denied }} denied invitations.</a></p>
                     </div>
                 </div>
 

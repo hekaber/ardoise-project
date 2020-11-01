@@ -26,6 +26,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='invite',
             name='status',
-            field=models.CharField(choices=[(apps.contacts.models.invites.InviteStatusEnum['PENDING'], 'invitation_pending'), (apps.contacts.models.invites.InviteStatusEnum['VALIDATED'], 'invitation_validated'), (apps.contacts.models.invites.InviteStatusEnum['CANCELLED'], 'invitation_cancelled'), (apps.contacts.models.invites.InviteStatusEnum['DENIED'], 'invitation_denied')], default=apps.contacts.models.invites.InviteStatusEnum['PENDING'], max_length=50),
+            field=models.CharField(choices=[(apps.contacts.models.invites.Invite.InviteStatusEnum['PENDING'], 'invitation_pending'), (apps.contacts.models.invites.Invite.InviteStatusEnum['VALIDATED'], 'invitation_validated'), (apps.contacts.models.invites.Invite.InviteStatusEnum['CANCELLED'], 'invitation_cancelled'), (apps.contacts.models.invites.Invite.InviteStatusEnum['DENIED'], 'invitation_denied')], default=apps.contacts.models.invites.Invite.InviteStatusEnum['PENDING'], max_length=50),
         ),
     ]
