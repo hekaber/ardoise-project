@@ -1,34 +1,30 @@
 from apps.contacts.models import Contact, Invite
-from apps.contacts.forms import InviteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
-from django.shortcuts import render
 from django.views import generic
+from django.shortcuts import render, redirect
 
 
-class InviteView(LoginRequiredMixin, generic.TemplateView):
+class InviteView(LoginRequiredMixin, generic.View):
     login_url = '/accounts/login/'
-    template_name = 'contacts/invite.html'
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
+        contact_id = self.request.POST.get('contact', '')
 
-        search = self.request.GET.get('search', '')
+        context = {'contact': None}
+        if contact_id:
+            context['contact'] = Contact.objects.get(pk=contact_id)
 
-        contacts_list = Contact.from_curr_user.find_potential_contacts(self.request.user)
+        return render(self.request, 'contacts/invite.html', context)
 
-        if search:
-            contacts_list = Contact.from_curr_user.search(self.request.user, search)
 
-        context = super().get_context_data(**kwargs)
+class InviteConfirmationView(LoginRequiredMixin, generic.View):
 
-        invites = Invite.objects.filter(
-            from_contact=self.request.user.contact_id
-        ).values(
-            'to_contact',
-            'status'
-        )
+    def post(self, request, *args, **kwargs):
+        contact_id = self.request.POST.get('contact', '')
 
-        context['invites_map'] = {invite.get('to_contact'): invite.get('status') for invite in invites}
-        context['contact_list'] = contacts_list
+        context = {'contact': None}
+        if contact_id:
 
-        return self.render_to_response(context)
+            context['contact'] = Contact.objects.get(pk=contact_id)
+
+        return render(self.request, 'contacts/invite_confirm.html', context)

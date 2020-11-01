@@ -1,4 +1,5 @@
 {% extends "shared/base.html" %}
+{% load static %}
 {% load materializecss %}
 {% block title %}
     Contacts - Invite
@@ -31,18 +32,41 @@
                 {% for contact in contact_list %}
                     <li class="collection-item">
                         <div class="row">
-                            <div class="col s4">{{ contact.first_name }}</div>
-                            <div class="col s4">{{ contact.last_name }}</div>
-                            <div class="col s2">{{ contact.email }}</div>
-                            {% if contact.id not in invites_map|keys %}
-                                <div class="col s1"><a  class="btn-large waves-effect waves-light  green lighten-1" href="#">Invite</a></div>
-                            {% else %}
-                                <div class="col s1">{{ invites_map|get_item:contact.id }}</div>
-                            {% endif %}
+                            <form id="inviteForm" action="{% url 'InviteConfirmationView' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="col s4">{{ contact.first_name }}</div>
+                                <div class="col s4">{{ contact.last_name }}</div>
+                                <div class="col s2">{{ contact.email }}</div>
+                                {% if contact.id not in invites_map|keys %}
+                                    <input type="hidden" name="contact" value="{{ contact.id }}"/>
+                                    <div class="col s1">
+                                        <button data-target="modal_confirm" class="btn-large modal-trigger waves-effect waves-light green lighten-1"
+                                                type="submit">Invite
+                                        </button>
+                                    </div>
+                                {% else %}
+                                    <div class="col s1">{{ invites_map|get_item:contact.id }}</div>
+                                {% endif %}
+                            </form>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
+    <!-- Modal Structure -->
+    <div id="modal_confirm" class="modal">
+        <div class="modal-content">
+            <h4>Inviting</h4>
+            <p>Confirm invitation?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="inviteYes" class="modal-close waves-effect waves-green btn-flat">Yes</button>
+            <button id="inviteNo" class="modal-close waves-effect waves-red btn-flat">No</button>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static "/assets/js/contact.js" %}"></script>
 {% endblock %}

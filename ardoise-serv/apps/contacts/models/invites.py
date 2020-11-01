@@ -10,9 +10,6 @@ class InviteStatusEnum(MEnum):
     DENIED = "invitation_denied"
 
 
-DEFAULT_INVITE_ID = InviteStatusEnum.PENDING
-
-
 class Invite(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)

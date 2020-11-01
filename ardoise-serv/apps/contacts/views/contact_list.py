@@ -1,5 +1,6 @@
 from apps.contacts.models import Contact, Invite
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.template.context_processors import csrf
 from django.views import generic
 
 
@@ -24,7 +25,7 @@ class ContactListView(LoginRequiredMixin, generic.TemplateView):
     login_url = '/accounts/login/'
     model = Contact
     context_object_name = 'contact_list'
-    template_name = 'contacts/invite.html'
+    template_name = 'contacts/contact_list.html'
 
     def get(self, request, *args, **kwargs):
 
@@ -46,5 +47,5 @@ class ContactListView(LoginRequiredMixin, generic.TemplateView):
 
         context['invites_map'] = {invite.get('to_contact'): invite.get('status') for invite in invites}
         context['contact_list'] = contacts_list
-
+        context.update(csrf(self.request))
         return self.render_to_response(context)
