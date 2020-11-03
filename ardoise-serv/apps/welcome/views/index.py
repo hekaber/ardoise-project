@@ -9,10 +9,5 @@ class IndexView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            context['counter'] = {
-                'pending': Invite.objects.get_pending_invites(self.request.user.contact_id).count(),
-                'validated': Invite.objects.get_validated_invites(self.request.user.contact_id).count(),
-                'cancelled': Invite.objects.get_cancelled_invites(self.request.user.contact_id).count(),
-                'denied': Invite.objects.get_denied_invites(self.request.user.contact_id).count(),
-            }
+            context['counter'] = Invite.objects.count_invites(self.request.user.contact_id).first()
         return context

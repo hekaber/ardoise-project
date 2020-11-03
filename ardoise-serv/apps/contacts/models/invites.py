@@ -22,4 +22,3 @@ class Invite(models.Model):
 
     class Meta:
         db_table = 'invite'
-        ordering = ['created']
